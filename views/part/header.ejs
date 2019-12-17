@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title><%=title%>></title>
+    <meta name="Author" content="Jeven">
+    <meta name="keywords" content="Jeven个人博客 web前端">
+    <meta name="description" content="你好鸭~这里是Jeven的个人博客！欢迎大家和我一起交流鸭~">
+    <style>
+        body{
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 1920px;
+            min-width: 1000px;
+            margin: 0 auto;
+            user-select: none;
+        }
+    </style>
+
+    <!--引入layui-->
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <script src="/layui/layui.js"></script>
+
+    <!--css-->
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/<%=css%>.css">
+
+
+    <!--js-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+
+    <!--title的变化-->
+    <script>
+        $(function () {
+            var title = document.title;
+            $(window)
+                .focus(function(){
+                    document.title = title;
+                })
+                .blur(function () {
+                    document.title = "快回来出bug了！"
+                });
+        });
+    </script>
+</head>
+<body>

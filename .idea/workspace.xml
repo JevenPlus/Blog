@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="23d7fe37-9047-45a9-a237-272ef147b6e9" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Less File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProjectId" id="1OrvP99Q3TIkHAjwdj3MgC63hP8" />
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.16.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/usercenter" />
+    <property name="list.type.of.created.stylesheet" value="Less" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\work\WebstormProjects\58-node\14-实战blog\blog\static\usercenter" />
+      <recent name="E:\work\WebstormProjects\58-node\14-实战blog\blog\static" />
+      <recent name="E:\work\WebstormProjects\58-node\14-实战blog\blog\static\photo" />
+      <recent name="E:\work\WebstormProjects\58-node\14-实战blog\blog\static\user" />
+      <recent name="E:\work\WebstormProjects\58-node\14-实战blog\blog\static\css" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Node.js.app.js">
+    <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="app.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="articleHtml.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="articleHtml.js" working-dir="$PROJECT_DIR$/routers">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.app.js" />
+        <item itemvalue="Node.js.articleHtml.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="23d7fe37-9047-45a9-a237-272ef147b6e9" name="Default Changelist" comment="" />
+      <created>1564748502773</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1564748502773</updated>
+      <workItem from="1564748504001" duration="9123000" />
+      <workItem from="1564816439063" duration="909000" />
+      <workItem from="1565007841724" duration="7889000" />
+      <workItem from="1565093454234" duration="3996000" />
+      <workItem from="1565189285189" duration="284000" />
+      <workItem from="1565190449714" duration="313000" />
+      <workItem from="1565266650736" duration="9034000" />
+      <workItem from="1565341187946" duration="8738000" />
+      <workItem from="1565612200745" duration="7642000" />
+      <workItem from="1565785044759" duration="9469000" />
+      <workItem from="1565849202707" duration="18805000" />
+      <workItem from="1565958291417" duration="3393000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

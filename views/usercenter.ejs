@@ -1,0 +1,527 @@
+<!--header引入-->
+<%- include("part/header" , {title:"个人中心",css:"usercenter" }) %>
+<!--背景引入-->
+<%- include("part/bg") %>
+
+<% if(ifLogin){ %>
+<!--个人中心面板-->
+<div id="usercenter">
+    <!--导航-->
+    <ul class="layui-nav">
+        <li class="layui-nav-item"><a href="/">返回首页</a></li>
+        <li class="layui-nav-item layui-this"><a href="/usercenter">个人中心</a></li>
+        <li class="right">
+            <i style="background-image: url(/photo/<%=data.photo%>)"></i>
+            <a href="/loginout">退出登录</a>
+        </li>
+    </ul>
+    <!--个人中心项目-->
+    <div class="layui-tab layui-tab-brief layui-bg-gray">
+        <ul class="layui-tab-title">
+            <li class="layui-this">个人信息</li>
+            <li>修改密码</li>
+            <li>上传头像</li>
+
+            <%if(data.user === "admin"){%>
+                <li class="articleLi">发表文章</li>
+                <li>管理文章</li>
+            <%}%>
+
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show content1">
+                <form class="layui-form">
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="25%">
+                            <col width="50%">
+                            <col>
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th style="font-weight: 700">栏目</th>
+                            <th style="font-weight: 700">值</th>
+                            <th style="font-weight: 700">修改</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>用户名</td>
+                            <td><%= data.user %></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>性别</td>
+                            <td>
+                                <div class="first"><%= data.sex %></div>
+                                <div class="second layui-form-item">
+                                    <div class="layui-input-block">
+                                        <input type="radio" name="sex" value="男" title="男">
+                                        <input type="radio" name="sex" value="女" title="女">
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <button type="button" class="layui-btn layui-btn-sm">修改</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>手机</td>
+                            <td>
+                                <div class="first"><%= data.tel %></div>
+                                <div class=" second layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="tel" lay-verify="telVerify" placeholder="请输入手机号"
+                                               autocomplete="off" class="layui-input" value="<%=data.tel%>">
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <button type="button" class="layui-btn layui-btn-sm">修改</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>邮箱</td>
+                            <td>
+                                <div class="first"><%= data.email %></div>
+                                <div class=" second layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="email" lay-verify="emailVerify" placeholder="请输入邮箱"
+                                               autocomplete="off" class="layui-input" value="<%=data.email%>">
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <button type="button" class="layui-btn layui-btn-sm">修改</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>个性签名</td>
+                            <td>
+                                <div class="first"><%= data.status %></div>
+                                <div class=" second layui-form-item">
+                                    <div class="layui-input-block">
+                                        <input type="text" name="status" placeholder="请输入个性签名" autocomplete="off"
+                                               class="layui-input"  value="<%=data.status%>">
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <button type="button" class="layui-btn layui-btn-sm">修改</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="resetInfo">提交修改</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="layui-tab-item content2">
+                <form class="layui-form">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">原密码</label>
+                        <div class="layui-input-inline">
+                            <input type="password" name="pwd" required lay-verify="pwdVerify" placeholder="请输入原密码" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">6-18位</div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">新密码</label>
+                        <div class="layui-input-inline">
+                            <input type="password" name="newPwd" required lay-verify="pwdVerify" placeholder="请输入新密码" autocomplete="off" class="layui-input" id="password">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">6-18位</div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">确认新密码</label>
+                        <div class="layui-input-inline">
+                            <input type="password" name="newPwd2" required lay-verify="pwd2Verify" placeholder="请再次输入新密码" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">再次输入新密码</div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="resetPwd">确认修改</button>
+                            <button type="reset" class="layui-btn layui-btn-primary" id="regReset">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="layui-tab-item content3">
+                <button type="button" class="layui-btn" id="photo">
+                    <i class="layui-icon">&#xe67c;</i>上传头像
+                </button>
+                <div class="layui-form-mid layui-word-aux" style="float: none; display: inline-block">图片大小不超过300k</div>
+            </div>
+            <%if(data.user === "admin"){%>
+            <div class="layui-tab-item content4">
+                <form class="layui-form">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">标题</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">标签</label>
+                        <style>
+                            #tags{margin: 0px 0px 0 110px;}
+                        </style>
+                        <div class="tags" id="tags">
+                            <input type="text" id="inputTags" placeholder="回车生成标签" autocomplete="off">
+                        </div>
+                        <script>
+                            var afei = afei || {};
+                            layui.use(['inputTags'],function(){
+                                var inputTags = layui.inputTags;
+                                afei.inputTagArr = inputTags.render({
+                                    elem:'#inputTags',//定义输入框input对象
+                                    content: ["js"],//默认标签
+                                    aldaBtn: false//是否开启获取所有数据的按钮
+                                });
+                            });
+
+                            $("#inputTags").keypress(function(e){
+                                e.stopPropagation();
+                            });
+                        </script>
+                    </div>
+                    <div class="layui-form-item">
+                        <style>
+                            .editlabel{
+                                float: left;
+                                width: 900px;
+                                background-color: #fff;
+                            }
+                        </style>
+                        <label class="layui-form-label">内容</label>
+                        <div class="editlabel">
+                            <textarea id="edit" style="display: none;"></textarea>
+                            <script>
+                                layui.use('layedit', function(){
+                                    afei.layedit = layui.layedit;
+                                    afei.layedit.set({
+                                        uploadImage: {
+                                            url: '/upload/article' //接口url
+                                            ,type: 'POST' //默认post
+                                        }
+                                    });
+                                    //注意：layedit.set 一定要放在 build 前面，否则配置全局接口将无效。
+                                    afei.editIndex = afei.layedit.build('edit'); //建立编辑器
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="button" class="layui-btn" lay-submit lay-filter="article">发表</button>
+                        </div>
+                    </div>
+                </form>
+                <script>
+                    layui.use("form",function(){
+                        var form = layui.form;
+
+                        form.on("submit(article)",function(data){
+                            var DATA = {
+                                title : data.field.title,
+                                tag : afei.inputTagArr.config.content,
+                                content : afei.layedit.getContent(afei.editIndex)
+                            };
+
+                            $.ajax({
+                                method : "POST",
+                                url : "/article",
+                                data : DATA,
+                                dataType : "json",
+                                success : function(data){
+                                    if (data.code){
+                                        layer.msg(
+                                            data.msg,
+                                            {icon:5,time:1000}
+                                        );
+                                    }else{
+                                        layer.msg(
+                                            data.msg,
+                                            {icon:1,time:1000},
+                                            function(){
+                                                window.location.href = "/article/"+data.id;
+                                            }
+                                        );
+                                    }
+                                }
+                            });
+
+                            return false;
+                        });
+                    });
+                </script>
+            </div>
+            <div class="layui-tab-item content5">
+                <form class="layui-form">
+                    <div class="layui-form-item">
+                        <div class="layui-input-inline" style="width: 290px">
+                            <input type="text" name="srh" placeholder="请输入查询关键词" autocomplete="off" class="layui-input" style="width: 190px;float:left">
+                            <button class="layui-btn" lay-submit lay-filter="search"  style="width: 60px;float:left;margin-left: 20px">查询</button>
+                        </div>
+                    </div>
+                </form>
+                <table class="layui-table">
+                    <colgroup>
+                        <col width="75%">
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th style="font-weight: 700">文章</th>
+                        <th style="font-weight: 700">删除</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <script>
+                    layui.use("form",function(){
+                        var form = layui.form;
+                        form.on("submit(search)",function(data){
+                            $.ajax({
+                                method : "POST",
+                                url : "/article/search",
+                                data : data.field,
+                                dataType : "json",
+                                success : function(data){
+                                    if (data.code){
+                                        layer.msg(
+                                            data.msg,
+                                            {icon:5,time:1000}
+                                        );
+                                    }else{
+                                        searchTable(data);
+                                    }
+                                }
+                            });
+                            return false;
+                        });
+
+                        var $tbody = $(".content5 tbody");
+                        $tbody.on("click",".del-btn",function () {
+                            var _id = $(this).attr("data-id");
+                            $(this).parent().parent().remove();
+                            $.ajax({
+                                method : "POST",
+                                url : "/article/delete",
+                                data : {_id:_id},
+                                success : function(data){
+                                    layer.msg(
+                                        data.msg,
+                                        {icon:data.code?5:1,time:1000}
+                                    )
+                                }
+                            });
+                        });
+
+                        function searchTable(data){
+                            var html = "";
+                            data.forEach(function(item,index){
+                                html += `<tr><td><a href="/article/${item._id}" target="_blank">${item.title}</a></td><td><button type="button" class="layui-btn del-btn" data-id="${item._id}">删除</button></td></tr>`;
+                            });
+                            $tbody.html(html);
+                        }
+                    });
+
+                </script>
+            </div>
+            <%}%>
+        </div>
+    </div>
+
+    <!--layui的模块-->
+    <script>
+        layui.use(['element', 'form' , "upload"], function () {
+            var form = layui.form;
+            var upload = layui.upload;
+
+
+            //form验证
+            form.verify({
+                "telVerify": function (value) {
+
+                    if (value && !/^1[3-9]\d{9}$/.test(value)) {
+                        return "手机号格式不正确！";
+                    }
+                },
+                "emailVerify": function (value) {
+                    if (value && !/^\w{2,}@[\da-z]{2,}(\.[a-z]{2,6}){1,2}$/i.test(value)) {
+                        return "邮箱格式不正确！";
+                    }
+                }
+                ,"pwdVerify" : function(value){
+                    if(!/^[\da-z_,!@#\$%\^&*()+\[\]{}\-=\.<>?]{6,18}$/i.test(value)){
+                        return "密码格式不正确";
+                    }
+                }
+                ,"pwd2Verify" : function (value) {
+                    var pwdValue = $("#password").val();
+                    if (value !== pwdValue){
+                        return "两次密码输入不一致！";
+                    }
+                }
+            });
+            //将修改提交到服务器
+            form.on('submit(resetInfo)', function (data) {
+                $.ajax({
+                    method : "post"
+                    ,url : "/update"
+                    ,data : data.field
+                    ,dataType : "json"
+                    ,success : function(data){
+                        if(data.code){
+
+
+                            if(data.code === 4){
+                                //登录超时
+                                layer.msg(
+                                    data.msg,
+                                    {icon:5,time:1000},
+                                    function(){window.location.href = "/#123"}
+                                );
+                            }else{
+                                //*其他错误
+                                layer.msg(
+                                    data.msg,
+                                    {icon:5,time:1000}
+                                );
+                            }
+
+                        }else{
+                            layer.msg(
+                                data.msg,
+                                {icon:1,time:1500},
+                                function(){window.location.reload()}
+                            );
+                        }
+
+                    }
+                });
+                return false;
+            });
+            //修改密码
+            form.on("submit(resetPwd)",function (data) {
+                console.log(data.field);
+                $.ajax({
+                    method : "POST",
+                    url : "/resetPwd/reset",
+                    data : data.field,
+                    dataType : "json",
+                    success : function(data){
+                        if (data.code){
+                            if (data.code === 4){
+                                //因为登录问题造成的失败
+                                layer.msg(
+                                    data.msg,
+                                    {icon:5,time:1000},
+                                    function(){
+                                        window.location.href = "/#123";
+                                    }
+                                );
+                            }else{
+                                //其他失败的原因
+                                layer.msg(data.msg, {icon:5,time:1000});
+                            }
+
+                        }else{
+                            //成功
+                            layer.msg(
+                                data.msg,
+                                {icon:1,time:1000},
+                                function(){
+                                    window.location.href = "/#123";
+                                }
+                            )
+                        }
+                    }
+                });
+                return false;
+            });
+
+            //长传头像
+            upload.render({
+                elem: '#photo' //绑定元素
+                ,url: '/upload/photo' //上传接口
+                ,size: 300
+                ,done: function(data){
+                    if (data.code === 4){
+                        layer.msg(
+                            data.msg,
+                            {icon:5,time:1000},
+                            function(){
+                                window.location.href = "/#123";
+                            }
+                        )
+                    }else{
+                        if(data.code){
+                            layer.msg(
+                                data.msg,
+                                {icon:5,time:1000}
+                            )
+                        }else{
+                            layer.msg(
+                                data.msg,
+                                {icon : 1,time:1000},
+                                function(){
+                                    window.location.reload();
+                                }
+                            );
+                        }
+                    }
+
+
+                }
+            });
+        });
+    </script>
+
+    <!--dom操作-->
+    <script>
+        !function f() {
+            var $content1Btn = $("#usercenter .content1 tr td .layui-btn");
+            $content1Btn.click(function () {
+                var $ele = $(this).parent().prev().children();
+                $ele.toggle();
+            });
+        }();
+
+        //为了避免发表文章的时候登录过期
+        (function(){
+            var $arctile = $(".articleLi");
+            if (!$arctile.length)return;
+            setInterval(function(){
+                if ($arctile.hasClass("layui-this")){
+                    $.ajax({url : "/"});
+                }
+            },10*60*1000-20);
+        })();
+    </script>
+</div>
+<% }else{ %>
+    您还登录，请先登录。<span id="time">5</span>秒后跳转到 <a href="/" style="color: red">首页</a>。
+    <script>
+        !function () {
+            var num = 5;
+            setInterval(function () {
+                num--;
+                if (num === 0) {
+                    window.location.href = "/#123";
+                }
+                $("#time").html(num);
+            }, 1000);
+        }();
+    </script>
+<% } %>
+
+

@@ -1,0 +1,358 @@
+<!--样式引入-->
+<link rel="stylesheet" href="/css/part/menu.css">
+<!--右上角菜单-->
+<div id="menu">
+    <!--开关-->
+    <div class="menu-switch">
+        <p class="line line1"></p>
+        <p class="line line2"></p>
+        <p class="line line3"></p>
+    </div>
+    <!--主内容-->
+    <div class="menu-main">
+        <ul>
+            <li><a href="/">首页</a></li>
+            <li><a href="/article.html">文章</a></li>
+            <li><a href="javascript:" id="usercenter">个人中心</a></li>
+            <li><a href="/">联系</a></li>
+        </ul>
+    </div>
+    <!--注册与登录-->
+    <div class="menu-sign" style="display: none">
+        <div class="sign-content">
+            <!--layui布局-->
+            <div class="layui-tab layui-bg-gray layui-tab-brief" lay-filter="docDemoTabBrief">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">登录</li>
+                    <li>注册</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                        <form class="layui-form" id="loginForm">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">用户名</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="user" required  lay-verify="userVerify" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">2-10位</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" name="pwd" required lay-verify="pwdVerify" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux"><a href="javascript:" class="forgetPwd">忘记密码？</a></div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="login">登录</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary forgetReset" id="loginReset">重置</button>
+                                </div>
+                            </div>
+                        </form>
+                        <form class="layui-form" id="resetPwdForm" style="display: none">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">用户名</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="user" required lay-verify="userVerify" placeholder="请输入用户名" autocomplete="off" class="layui-input" id="newUser">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">2-12位</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">新密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" name="pwd" required lay-verify="pwdVerify" placeholder="请输入新密码" autocomplete="off" class="layui-input" id="newPassword">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">6-18位</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">确认新密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" name="pwd2" required lay-verify="pwd3Verify" placeholder="请再次输入新密码" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">再次输入新密码</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">密保问题：</label>
+                                <a href="javascript:" class="showQ">点击显示密保问题</a>
+                                <div class="layui-form-mid layui-word-aux q"></div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">密保答案：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="s" required lay-verify="qVerify" placeholder="请输入密保答案" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux"><a href="javascript:" class="forgetPwd">返回登录页面</a></div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="resetPwd">确认修改</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary forgetReset">重置</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="layui-tab-item">
+                        <form class="layui-form">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">用户名</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="user" required  lay-verify="userVerify" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">2-10位</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" name="pwd" required lay-verify="pwdVerify" placeholder="请输入密码" autocomplete="off" class="layui-input" id="password">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">6-18位</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">确认密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" name="pwd2" required lay-verify="pwd2Verify" placeholder="请再次输入密码" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">再次确认密码</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">密保问题</label>
+                                <div class="layui-input-inline">
+                                    <select name="q">
+                                        <option value="0">您的生日是？</option>
+                                        <option value="1">您的电话号码是？</option>
+                                        <option value="2">您母亲的姓名？</option>
+                                        <option value="3">您父亲的姓名？</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">密保答案</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="s" required placeholder="请输入问题答案" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="regist">立即注册</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary" id="regReset">重置</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!--关闭按钮-->
+            <div class="sign-center-close">×</div>
+        </div>
+    </div>
+    <!--登录与注册的js-->
+</div>
+<!--菜单的javascript-->
+<script>
+    //右上角菜单
+    (function(){
+        var $menuSwitch = $("#menu .menu-switch")
+            ,$menu = $("#menu")
+            ,$menuSign = $menu.find(".menu-sign")
+            ,$close = $menu.find(".sign-center-close")
+            ,$usercenter = $("#usercenter")
+            ,$forgetPwd = $menuSign.find(".forgetPwd")
+            ,$loginForm = $("#loginForm")
+            ,$resetPwdForm = $("#resetPwdForm")
+            ,$showQ = $menuSign.find(".showQ")
+            ,$newUser = $("#newUser")
+            ,$q = $menuSign.find(".q")
+        ;
+
+        var qArr = ['您的生日是？', '您的电话号码是？', '您母亲的姓名？', '您父亲的姓名？'];
+
+        //菜单收缩开关
+        $menuSwitch.on("click",function(){
+            $menu.toggleClass("show");
+        });
+
+        //个人中心点击
+        $usercenter.click(function(){
+            $.ajax({
+                method : "post",
+                url : "/usercenter",
+                dataType : "json",
+                success : function(data){
+                    if (data.code){
+                        $menuSign.fadeIn(200);
+                    }else{
+                        window.location.href = "/usercenter";
+                    }
+                }
+            });
+        });
+
+        //关闭登录弹窗
+        $close.on("click",function(){
+            $menuSign.fadeOut(100);
+        });
+
+        //登录弹窗中切换忘记密码模块
+        $forgetPwd.click(function(){
+            var index = $(this).index("#menu .menu-sign .forgetPwd");
+            if(index){
+                $loginForm.show();
+                $resetPwdForm.hide();
+            }else{
+                $loginForm.hide();
+                $resetPwdForm.show();
+            }
+        });
+
+        //获取密保问题
+        $showQ.click(function(){
+            var val = $newUser.val();
+            if (val){
+
+                $.ajax({
+                    method : "POST",
+                    url : "/resetPwd/getInfo",
+                    data : {user:val},
+                    dataType : "json",
+                    success : function(data){
+                        var code = data.code;
+                        if (code === 0){
+                            $q.html(qArr[data.data.q]);
+                            $showQ.hide();
+                        }else{
+                            layer.msg(
+                                data.msg,
+                                {icon:5,time:1000}
+                            )
+                        }
+                    }
+                });
+
+            }else{
+                layer.msg(
+                    "请先输入用户名",
+                    {time:1000,icon:5},
+                    function(){$newUser.focus()}
+                )
+            }
+        });
+
+        //修改用户名
+        $newUser.change(function(){
+            $q.html("");
+            $showQ.show();
+        });
+    })();
+</script>
+<!--layui 模块-->
+<script>
+    //依赖
+    layui.use(['element','form'], function(){
+
+        var form = layui.form;
+        //form验证
+        form.verify({
+            "userVerify" : function (value) {
+                if ( !/^[\w\u4e00-\u9fa5]{2,10}$/.test(value) ){
+                    return "用户名格式不正确！";
+                }
+            }
+            ,"pwdVerify" : function(value){
+                if(!/^[\da-z_,!@#\$%\^&*()+\[\]{}\-=\.<>?]{6,18}$/i.test(value)){
+                    return "密码格式不正确";
+                }
+            }
+            ,"pwd2Verify" : function (value) {
+                var pwdValue = $("#password").val();
+                if (value !== pwdValue){
+                    return "两次密码输入不一致！";
+                }
+            }
+            ,"pwd3Verify" : function (value) {
+                var pwdValue = $("#newPassword").val();
+                if (value !== pwdValue){
+                    return "两次密码输入不一致！";
+                }
+            }
+            ,"qVerify" : function(value){
+                if(!value){
+                    return "答案不能为空！";
+                }
+            }
+        });
+        //注册-监听提交
+        form.on('submit(regist)', function(data){
+            //注册信息通过ajax发送
+            $.ajax({
+                method : "POST"
+                ,url : "/regist"
+                ,data : data.field
+                ,dataType : "json"
+                ,success : function(data){
+                    if(data.code){
+                        //注册失败，直接弹窗
+                        layer.msg(
+                            data.msg,
+                            {icon:5,time:1500},
+                            function(){$("#regReset").click()}
+                        );
+                    }else{
+                        //注册成功，直接跳转
+                        window.location.href = "/usercenter";
+                    }
+                }
+            });
+            return false;
+        });
+        //登录-监听提交
+        form.on("submit(login)",function(data){
+            $.ajax({
+                type : "post",
+                url : "/login",
+                data : data.field,
+                dataType : "json",
+                success : function(data){
+                    if(data.code){
+                        layer.msg(
+                            data.msg,
+                            {icon:5,time:1500}
+                        );
+                    }else{
+                        window.location.href = "/usercenter";
+                    }
+
+                }
+            });
+            return false;
+        });
+        //忘记密码-监听提交
+        form.on("submit(resetPwd)",function(data){
+
+            $.ajax({
+                method : "POST",
+                url : "/resetPwd/forget",
+                data : data.field,
+                dataType : "json",
+                success : function(data){
+                    if (data.code){
+                        layer.msg(data.msg, {icon:5,time:1000})
+                    }else{
+                        layer.msg(
+                            data.msg,
+                            {icon:1,time:1000},
+                            function () {
+                                $(".forgetReset").click();
+                                $("#loginForm").show();
+                                $("#resetPwdForm").hide();
+                            }
+                        )
+                    }
+                }
+            });
+
+            return false;
+        });
+    });
+</script>

@@ -1,0 +1,171 @@
+
+#article {
+  width: 1000px;
+  margin: 0 auto;
+  padding-top: 100px;
+}
+#article .article-main{
+  background-color: #fff;
+}
+#article .article-main h2{
+  text-align: center;
+  padding: 15px 0;
+  border-bottom: 1px dotted #eee;
+}
+#article .article-main h2 p{
+  color: #999;
+  font-size:12px;
+  margin-top: 15px;
+}
+#article .article-main .content{
+  text-indent: 2em;
+  line-height: 30px;
+}
+#article .article-comment{
+  margin-top: 20px;
+}
+#article .article-comment h3{
+  line-height: 30px;
+  border-bottom: 1px dotted #eee;
+}
+#article .article-comment .comment-show{
+  padding: 10px;
+  background-color: #fff;
+}
+#article .comment-add{
+  margin-top: 5px;
+}
+
+#article .article-comment .commentLi-first{
+  padding: 10px 0;
+  border-bottom: 1px dotted #eee;
+}
+#article .article-comment .commentLi-first::after{
+  display: block;
+  content: "";
+  clear: both;
+}
+#article .article-comment .commentLi-first .first-info{
+  overflow: hidden;
+  float: left;
+  width: 10%;
+}
+#article .article-comment .commentLi-first .first-comment{
+  position: relative;
+  overflow: hidden;
+  float: right;
+  width: 85%;
+  padding-bottom: 0;
+  transition: padding-bottom .4s;
+}
+#article .article-comment .commentLi-first .first-comment.showForm{
+  padding-bottom: 31px;
+  .hf-form{
+    display: block;
+  }
+}
+#article .article-comment .commentLi-first .first-info i{
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  background: none no-repeat center center/cover;
+  border-radius: 50%;
+}
+#article .article-comment .commentLi-first .first-info p{
+  overflow: hidden;
+  height: 20px;
+  font-size:12px;
+  color: #999;
+  line-height: 20px;
+  text-align: center;
+}
+#article .article-comment .commentLi-first .first-comment>p{
+  position: relative;
+  padding-bottom: 12px;
+  font-size:14px;
+  color: #333;
+}
+#article .article-comment .commentLi-first .first-comment .hf-form{
+  display: none;
+  position: absolute;
+  bottom: 0;
+  right:0;
+  padding-top: 5px;
+  border-top: 1px dotted #eee;
+}
+#article .article-comment .commentLi-first .first-comment .hf-form .btn{
+  width: 60px;
+}
+#article .article-comment .commentLi-first .first-comment .hf-form .layui-form-item{
+  margin-bottom: 5px;
+}
+#article .article-comment .commentLi-first .first-comment .hf-form .layui-form-item .layui-input
+,#article .article-comment .commentLi-first .first-comment .hf-form .layui-form-item .layui-btn{
+  height: 20px;
+  line-height: 20px;
+  font-size:12px;
+}
+#article .article-comment .commentLi-first .first-comment>p>i{
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size:12px;
+  color: #bbb;
+  line-height: 12px;
+  height: 12px;
+}
+#article .article-comment .commentLi-first .first-comment>p>i>a{
+  font-style: normal;
+  margin-right: 5px;
+  text-decoration: underline;
+  color: blue;
+}
+#article .article-comment .commentLi-first .first-comment .commentLi-second{
+  padding: 3px;
+  border-top: 1px dotted #eee;
+}
+#article .article-comment .commentLi-first .first-comment .commentLi-second::after{
+  display: block;
+  content: "";
+  clear: both;
+}
+#article .article-comment .commentLi-first .first-comment .commentLi-second .second-info{
+  float: left;
+  width: 10%;
+}
+#article .article-comment .commentLi-first .first-comment .commentLi-second .second-info>i{
+  float: left;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: none no-repeat center center/cover;
+}
+#article .article-comment .commentLi-first .first-comment .commentLi-second .second-info>p {
+  float: left;
+  overflow: hidden;
+  height: 30px;
+  color: #999;
+  font-size: 12px;
+  line-height: 30px;
+  margin-left: 5px;
+}
+#article .article-comment .commentLi-first .first-comment .commentLi-second .second-comment{
+  float: right;
+  width: 85%;
+}
+#article .article-comment .commentLi-first .first-comment .commentLi-second .second-comment>p{
+  position: relative;
+  color: #666;
+  padding-bottom: 12px;
+}
+#article .article-comment .commentLi-first .first-comment .commentLi-second .second-comment>p>i{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: #bbb;
+  font-size: 12px;
+  line-height: 12px;
+  height: 12px;
+}

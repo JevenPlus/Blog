@@ -1,0 +1,81 @@
+<!--header引入-->
+<%- include("part/header" , {title:"阿飞的个人博客",css:"article" }) %>
+<!--背景引入-->
+<%- include("part/bg") %>
+<!--引入菜单-->
+<%- include("part/menu") %>
+
+<style>
+    #articleAll {
+        width: 1000px;
+        margin: 0 auto;
+        padding-top: 100px;
+    }
+    #articleAll ul li{
+        padding: 15px;
+        border-bottom: 1px dotted #ddd;
+    }
+</style>
+
+<div id="articleAll">
+    <div id="articleList">
+        <ul>
+
+        </ul>
+    </div>
+    <div id="page"></div>
+</div>
+
+<!--layui script-->
+<script>
+    layui.use(['laypage', 'layer'], function () {
+        var laypage = layui.laypage
+            , layer = layui.layer;
+
+        //总页数低于页码总数
+        laypage.render({
+            elem: 'page'
+            , count: <%= len %> //数据总数
+            ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+            , jump :function(obj, first){
+                //console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                //console.log(); //得到每页显示的条数
+                ajax(obj.curr-1,obj.limit);
+            }
+        });
+
+        function ajax(skip,limit) {
+            var html = "";
+            $ul = $('#articleList ul');
+            $.ajax({
+                method: "POST"
+                , url: "/article.html"
+                , data: {skip: skip*limit,limit:limit}
+                , dataType: "json"
+                , success: function (data) {
+                    data.forEach(item => {
+                        html += `<li><a href="/article/${item._id}" target="_blank">${item.title}</a></li>`
+                    });
+
+                    $ul.html(html);
+                }
+            });
+        }
+
+        /*$(function () {
+
+
+            ajax(0);
+
+
+
+        });*/
+
+    });
+</script>
+<script>
+
+</script>
+
+<!--尾部信息-->
+<%- include("part/footer") %>

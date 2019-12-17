@@ -1,0 +1,302 @@
+<!--header引入-->
+<%- include("part/header" , {title:"阿飞的个人博客",css:"article" }) %>
+<!--背景引入-->
+<%- include("part/bg") %>
+<!--引入菜单-->
+<%- include("part/menu") %>
+
+<script>
+    var articleId = window.location.href.match(/\/article\/([\da-f]{24})/)[1];
+</script>
+
+<div id="article">
+    <div class="article-main">
+        <h2>
+            <%=data.title%>
+            <p> 作者：<%=data.author.user%> &nbsp;&nbsp;&nbsp;&nbsp;发表时间：<%=data.date.toLocaleDateString()%></p>
+        </h2>
+        <div class="content">
+            <%-data.content%>
+        </div>
+    </div>
+    <div class="article-comment">
+        <h3>评论</h3>
+        <div class="comment-show">
+            <ul class="commentUl-first">
+                <!--<li class="commentLi-first">
+                    <div class="first-info">
+                        <i style="background-image: url(/photo/default.jpg)"></i>
+                        <p>阿飞</p>
+                    </div>
+                    <div class="first-comment">
+                        <p>真是一篇好文章啊，厉害厉害！真是一篇好文章啊，厉害厉害！真是一篇好文章啊，厉害厉害！真是一篇好文章啊，厉害厉害！真是一篇好文章啊，厉害厉害！真是一篇好文章啊，厉害厉害！真是一篇好文章啊，厉害厉害！真是一篇好文章啊，厉害厉害！真是一篇好文章啊，厉害厉害！真是一篇好文章啊，厉害厉害！
+                            <i><a href="javascript:" class="hf">回复</a>2019/08/07</i>
+                        </p>
+                        <form class="layui-form hf-form">
+                            <div class="layui-form-item">
+                                <div class="layui-input-inline">
+                                    <input type="text" name="hf" required lay-verify="required"  placeholder="请输入回复" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-input-inline btn">
+                                    <button class="layui-btn" lay-submit lay-filter="hf">发表</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <ul class="commentUl-second">
+                            <li class="commentLi-second">
+                                <div class="second-info">
+                                    <i style="background-image: url(/photo/default.jpg)"></i>
+                                    <p>无虑</p>
+                                </div>
+                                <div class="second-comment">
+                                    <p>
+                                        是的没错。
+                                        <i>2019/09/07</i>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="commentLi-second">
+                                <div class="second-info">
+                                    <i style="background-image: url(/photo/default.jpg)"></i>
+                                    <p>无虑</p>
+                                </div>
+                                <div class="second-comment">
+                                    <p>
+                                        赞同赞同。
+                                        <i>2019/09/07</i>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="commentLi-first">
+                    <div class="first-info">
+                        <i style="background-image: url(/photo/default.jpg)"></i>
+                        <p>阿飞</p>
+                    </div>
+                    <div class="first-comment">
+                        <p>真是一篇好文章啊，厉害厉害！真是一篇好文章啊，厉害厉害！真是一篇好文章啊，厉害厉害！真是一篇好文章啊，厉害厉害！真是一篇好文章啊，厉害厉害！真是一篇好文章啊，厉害厉害！真是一篇好文章啊，厉害厉害！真是一篇好文章啊，厉害厉害！真是一篇好文章啊，厉害厉害！真是一篇好文章啊，厉害厉害！
+                            <i><a href="javascript:" class="hf">回复</a>2019/08/07</i>
+                        </p>
+                        <form class="layui-form hf-form">
+                            <div class="layui-form-item">
+                                <div class="layui-input-inline">
+                                    <input type="text" name="hf" required lay-verify="required"  placeholder="请输入回复" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-input-inline btn">
+                                    <button class="layui-btn" lay-submit lay-filter="hf">发表</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <ul class="commentUl-second">
+                            <li class="commentLi-second">
+                                <div class="second-info">
+                                    <i style="background-image: url(/photo/default.jpg)"></i>
+                                    <p>无虑</p>
+                                </div>
+                                <div class="second-comment">
+                                    <p>
+                                        是的没错。
+                                        <i>2019/09/07</i>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="commentLi-second">
+                                <div class="second-info">
+                                    <i style="background-image: url(/photo/default.jpg)"></i>
+                                    <p>无虑</p>
+                                </div>
+                                <div class="second-comment">
+                                    <p>
+                                        赞同赞同。
+                                        <i>2019/09/07</i>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>-->
+                <%data.comment.forEach(item=>{%>
+                    <li class="commentLi-first">
+                        <div class="first-info">
+                            <i style="background-image: url(/photo/<%=item.author.photo%>)"></i>
+                            <p><%=item.author.user%></p>
+                        </div>
+                        <div class="first-comment">
+                            <p>
+                                <%=item.content%>
+                                <i><a href="javascript:" class="hf">回复</a><%=item.date.toLocaleDateString()%></i>
+                            </p>
+                            <form class="layui-form hf-form">
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="content" required lay-verify="required"  placeholder="请输入回复" autocomplete="off" class="layui-input">
+                                    </div>
+                                    <input type="hidden" name="_id" value="<%=item._id%>">
+                                    <div class="layui-input-inline btn">
+                                        <button class="layui-btn" lay-submit lay-filter="hf">发表</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <ul class="commentUl-second">
+                                <%item.comment.forEach(item=>{%>
+                                    <li class="commentLi-second">
+                                        <div class="second-info">
+                                            <i style="background-image: url(/photo/<%=item.author.photo%>)"></i>
+                                            <p><%=item.author.user%></p>
+                                        </div>
+                                        <div class="second-comment">
+                                            <p>
+                                                <%=item.content%>
+                                                <i><%=item.date.toLocaleDateString()%></i>
+                                            </p>
+                                        </div>
+                                    </li>
+                                <%})%>
+                                <!--<li class="commentLi-second">
+                                    <div class="second-info">
+                                        <i style="background-image: url(/photo/default.jpg)"></i>
+                                        <p>无虑</p>
+                                    </div>
+                                    <div class="second-comment">
+                                        <p>
+                                            是的没错。
+                                            <i>2019/09/07</i>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="commentLi-second">
+                                    <div class="second-info">
+                                        <i style="background-image: url(/photo/default.jpg)"></i>
+                                        <p>无虑</p>
+                                    </div>
+                                    <div class="second-comment">
+                                        <p>
+                                            赞同赞同。
+                                            <i>2019/09/07</i>
+                                        </p>
+                                    </div>
+                                </li>-->
+                            </ul>
+                        </div>
+                    </li>
+                <%})%>
+            </ul>
+        </div>
+        <script>
+            $(function(){
+                var $hf = $(".comment-show .hf");
+                $hf.click(function () {
+                    $(this).parents(".first-comment").toggleClass("showForm");
+                });
+            });
+        </script>
+
+        <div class="comment-add">
+            <form class="layui-form">
+                <div class="layui-form-item layui-form-text">
+                    <div class="layui-input-block" style="margin-left: 0">
+                        <textarea disabled name="desc" placeholder="请先登录再进行评论" class="layui-textarea comment-area"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block" style="margin-left: 0">
+                        <button type="button" class="layui-btn layui-btn-disabled" lay-submit lay-filter="add">发表评论</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script>
+
+            layui.use(['form'], function(){
+                var form = layui.form;
+
+                form.on("submit(add)",function (data) {
+                    if($(".comment-area").prop("disabled"))return false;
+                    $.ajax({
+                        method : "POST"
+                        ,url : "/comment"
+                        ,data : {articleId:articleId,content:data.field.desc}
+                        ,dataType : "json"
+                        ,success : function(data){
+                            if(data.code){
+                                layer.msg(
+                                    data.msg,
+                                    {icon:5,time:1000}
+                                )
+                            }else{
+                                layer.msg(
+                                    data.msg,
+                                    {icon:1,time:1000},
+                                    function(){
+                                        window.location.reload();
+                                    }
+                                )
+                            }
+                        }
+                    });
+
+                    return false;
+                });
+
+                form.on("submit(hf)",function (data) {
+                    if($(".comment-area").prop("disabled"))return false;
+                    $.ajax({
+                        method : "POST"
+                        ,url : "/comment/comment"
+                        ,data : data.field
+                        ,dataType : "json"
+                        ,success : function(data){
+                            if(data.code){
+                                layer.msg(
+                                    data.msg,
+                                    {icon:5,time:1000}
+                                )
+                            }else{
+                                layer.msg(
+                                    data.msg,
+                                    {icon:1,time:1000},
+                                    function(){
+                                        window.location.reload();
+                                    }
+                                )
+                            }
+                        }
+                    });
+
+                    return false;
+                });
+            });
+        </script>
+    </div>
+
+</div>
+
+<script>
+
+    $(function () {
+        var $area = $(".comment-area");
+        var $btn = $(".layui-btn-disabled");
+        $.ajax({
+            method : "POST",
+            url : "/ifLogin",
+            success : function(data){
+                if(!data.code){
+                    $area.prop({
+                        "disabled":false,
+                        placeholder : "请输入评论"
+                    });
+                    $btn.removeClass("layui-btn-disabled");
+                }
+            }
+        });
+    });
+
+</script>
+
+<!--尾部信息-->
+<%- include("part/footer") %>
